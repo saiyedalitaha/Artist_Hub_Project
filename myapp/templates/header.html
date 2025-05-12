@@ -1,0 +1,276 @@
+{% load static %}
+
+<!doctype html>
+    <html class="no-js" lang="zxx">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Artist Hub</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- <link rel="manifest" href="site.webmanifest"> -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'css/audioplayer.css' %}">
+        <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+        
+    </head>
+
+    <body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+            <!-- header-start -->
+            <header>
+                <div class="header-area ">
+                    <div id="sticky-header" class="main-header-area">
+                        <div class="container-fluid">
+                            <div class="header_bottom_border">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-3 col-lg-2">
+                                        <!--div class="logo">
+                                            <a href="/">
+                                                <img src="{% static 'img/logo.png' %}" alt="">
+                                            </a>
+                                        </div !-->
+                                    </div>
+                                    <div class="col-xl-6 col-lg-7">
+                                        <div class="main-menu  d-none d-lg-block">
+                                            <nav>
+                                                <ul id="navigation">
+                                                    <li><a class="active" href="/">Home</a></li>
+                                                    <li><a href="{% url 'about' %}">About</a></li>
+                                                <li><a href="{% url 'artist' %}">Artists</a></li>
+                                                <li><a href="{% url 'reviews' %}">Reviews</a></li>
+
+                                                {% if request.session.email %}
+                                                <li><a href="{% url 'reviews' %}">Review<i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                        
+                                                        <li><a href="{% url 'customer_review' %}">Customer Review</a></li>
+                                                        <li><a href="{% url 'artist_review' %}">Artist Review</a></li>
+                                                        
+                                                        
+                                                    </ul>
+                                                </li>
+                                                
+                                                {% endif %}
+                                            
+                                                   
+                                        
+                                            <!-- li><a href="{% url 'track' %}">tracks</a></li>
+                                            <li><a href="blog_page.html">blog <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'blog_page' %}">blog</a></li>
+                                                    
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                     
+                                                </ul>
+                                            </li !-->
+                                            {% if request.session.email %}
+                                            <li><a href="{% url 'view_booking' %}">View My Bookings<i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'customer_confirmed_booking' %}">Confirmed Booking</a></li>
+                                                  <li><a href="{% url 'customer_pending_booking' %}">Pending Booking</a></li>
+                                                    <li><a href="{% url 'customer_accepted_booking' %}">Accepted Booking</a></li>
+                                                    <li><a href="{% url 'customer_canceled_booking' %}">Rejected Booking</a></li>
+                                                    
+                                                    <li><a href="{% url 'view_booking' %}">All Booking</a></li>
+                                                </ul>
+                                            </li>
+                                            
+                                            {% endif %}
+                                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                                            {% if request.session.email %}
+                                            
+                                            <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                                            <li><a href="{% url 'profile' %}">User Profile</a></li>
+                                            <li><a href="{% url 'logout' %}">Logout({{request.session.fname}})</a></li>
+                                            
+                                            {% else %}
+                                            <li><a href="{% url 'signup' %}">Signup</a></li>
+                                            <li><a href="{% url 'login' %}">Login</a></li>
+                                            {% endif %}
+                                            
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="social_icon text-right">
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/"> <i class="fa fa-facebook"></i> </a></li>
+                                        <li><a href="https://twitter.com/"> <i class="fa fa-twitter"></i> </a></li>
+                                        <li><a href="https://www.instagram.com/"> <i class="fa fa-instagram"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-xl-5 col-md-5 offset-xl-1">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Contact Me
+                            </h3>
+                            <ul>
+                                <li><a href="#">dhavalpatel3906@gmail.com
+                                </a></li>
+                                <li><a href="#">+91 7878076262
+                                </a></li>
+                                <li><a href="#">C - 202, Shri Nidhi Residency Sudama Chowk Mota Varachha Surat 394101. Gujarat, India</a></li>
+                            </ul>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/">
+                                            <i class=" fa fa-facebook "></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.google.com/">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/">
+                                            <i class="fa fa-youtube-play"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-7 col-md-6">
+                        
+                    </div>
+                    <div class="col-xl-5 col-md-6">
+                        <div class="footer_links">
+                            <ul>
+                                <li><a href="{% url 'indexpage' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'track' %}">Track</a></li>
+                                <li><a href="{% url 'blog_page' %}">Block</a></li>
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/ footer end  -->
+
+    <!-- link that opens popup -->
+
+    <!-- JS here -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    crossorigin="anonymous">
+</script>
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'js/ajax-form.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/audioplayer.js' %}"></script>
+<script src="{% static 'js/scrollIt.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/gijgo.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<!--contact js-->
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+<script>
+    $(function() {
+        $('audio').audioPlayer({
+
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function preventBack() {
+        window.history.forward(); 
+    }
+    
+    setTimeout("preventBack()", 0);
+    
+    window.onunload = function () { null };
+</script>    
+</body>
+
+</html>
